@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class GameStateBase : IGameState {
+public abstract class GS_Base : IGameState {
         
-	public GameStateBase() {}
+	public GS_Base() {}
+
     public virtual void StartState () {
 		Debug.Log(ToString() + ": Start State");
 	}
