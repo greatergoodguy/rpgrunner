@@ -14,9 +14,7 @@ public class GameFlow {
 	
 	public static readonly IGameState gsInitializeApplication	= new GSInitializeApplication();
 	public static readonly IGameState gsMenuStart 	= new GSMenuStart();
-	//public static readonly IGameState gsRoomCreate 	= new GSRoomCreate();
-	//public static readonly IGameState gsRoomJoin 	= new GSRoomJoin();
-	//public static readonly IGameState gsPlayground 	= new GSPlayground();
+	public static readonly IGameState gsPlay 		= new GSPlay();
 	
 	public static readonly IGameState gsMock     	= new GSMock();
 	
