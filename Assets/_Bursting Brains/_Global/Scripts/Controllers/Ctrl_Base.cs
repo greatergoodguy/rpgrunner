@@ -11,8 +11,4 @@ public abstract class Ctrl_Base : MonoBehaviour{
 	public bool IsVisible() {
 		return gameObject.activeSelf;
 	}
-	
-	public void SetPositionToOrigin() {
-		transform.position = Vector3.zero;
-	}
 }

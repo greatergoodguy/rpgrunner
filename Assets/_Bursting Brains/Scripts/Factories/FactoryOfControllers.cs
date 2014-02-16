@@ -10,4 +10,13 @@ public static class FactoryOfControllers {
 		
 		return ctrlMenuStart;
 	}
+
+
+	static CtrlPlayer ctrlPlayer;
+	public static CtrlPlayer GetCtrlPlayer() {
+		if(ctrlPlayer == null)
+			ctrlPlayer = GameObject.Find("Player").GetComponent_BB<CtrlPlayer>();
+		
+		return ctrlPlayer;
+	}
 }

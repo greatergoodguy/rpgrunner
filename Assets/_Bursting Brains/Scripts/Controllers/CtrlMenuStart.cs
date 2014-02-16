@@ -18,13 +18,4 @@ public class CtrlMenuStart : Ctrl_Base {
 
 	public void ButtonQuit() {
 		Application.Quit();}
-
-	public void SetVisible(bool isVisible) {
-		if(isVisible) 	gameObject.SetActive(true);
-		else 			gameObject.SetActive(false);
-	}
-	
-	public bool IsVisible() {
-		return gameObject.activeSelf;
-	}
 }
