@@ -19,4 +19,12 @@ public static class FactoryOfControllers {
 		
 		return ctrlPlayer;
 	}
+
+	static CtrlLevel1 ctrlLevel1;
+	public static CtrlLevel1 GetCtrlLevel1() {
+		if(ctrlLevel1 == null)
+			ctrlLevel1 = GameObject.Find("Level 1").GetComponent_BB<CtrlLevel1>();
+		
+		return ctrlLevel1;
+	}
 }

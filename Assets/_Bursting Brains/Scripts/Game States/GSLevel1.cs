@@ -1,29 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GSMenuStart : GS_Base {
+public class GSLevel1 : GS_Base {
 
-	CtrlMenuStart ctrlMenuStart;
+	CtrlPlayer ctrlPlayer;
+	CtrlLevel1 ctrlLevel1;
 
 	bool isFinished;
 	
-	public GSMenuStart() {
-		ctrlMenuStart = FactoryOfControllers.GetCtrlMenuStart();
+	public GSLevel1() {
+		ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
+		ctrlLevel1 = FactoryOfControllers.GetCtrlLevel1();
 	}
 	
 	public override void StartState () {
 		base.StartState ();
 
-		ctrlMenuStart.SetVisible(true);
-		ctrlMenuStart.SetDelPlay(Finish);
+		ctrlPlayer.SetVisible(true);
+		ctrlPlayer.SetPosition(Vector3.zero);
+
+		ctrlLevel1.SetVisible(true);
 
 		isFinished = false;
 	}
 	
 	public override void ExitState () {
 		base.ExitState ();
-
-		ctrlMenuStart.SetVisible(false);
 	}
 	
 	public override bool IsFinished() {
@@ -31,10 +33,6 @@ public class GSMenuStart : GS_Base {
 	}
 	
 	public override IGameState GetNextGameState() {
-		return GameFlow.gsLevel1;
-	}
-	
-	void Finish() {
-		isFinished = true;
+		return GameFlow.gsMock;
 	}
 }

@@ -7,4 +7,7 @@ public class CtrlPlayer : Ctrl_Base {
 		SetVisible(false);
 	}
 
+	public void SetPosition(Vector3 position) {
+		transform.position = position;
+	}
 }
