@@ -31,21 +31,6 @@ public class CtrlPlayer : Ctrl_Base {
 	}
 
 	void Update() {
-
-		if(Input.GetKeyDown(KeyCode.Space)) {
-			Jump();
-		}
-
-		if(	Input.GetKeyDown(KeyCode.LeftShift) || 
-		   	Input.GetKeyDown(KeyCode.RightShift)) {
-
-			Attack();
-		}
-
-		if(!IsOnGround()){
-			UpdateGravity();
-		}
-
 		activePlayerState.Update();
 		
 		if(activePlayerState.IsFinished()) {
@@ -55,7 +40,7 @@ public class CtrlPlayer : Ctrl_Base {
 		}
 	}
 
-	void UpdateGravity() {
+	public void UpdateFromGravity() {
 		Vector3 tempPos = transform.position;
 		verticalVelocity += ACCEL_GRAVITY * Time.deltaTime;
 		if(verticalVelocity > VELOCITY_VERTICAL_MAX)
@@ -91,6 +76,17 @@ public class CtrlPlayer : Ctrl_Base {
 	public bool IsOnGround() {
 		bool isOnGround = transform.position.y < 0;
 		return isOnGround;
+	}
+
+	public bool isKeyDownJump() {
+		return Input.GetKeyDown(KeyCode.Space);
+	}
+
+	public bool isKeyDownAttack() {
+		bool result = 	Input.GetKeyDown(KeyCode.LeftShift) || 
+			Input.GetKeyDown(KeyCode.RightShift);
+
+		return result;
 	}
 
 	// ========================
