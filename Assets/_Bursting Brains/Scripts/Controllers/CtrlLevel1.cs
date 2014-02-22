@@ -7,6 +7,8 @@ public class CtrlLevel1 : Ctrl_Base {
 		SetVisible(false);
 	}
 
-	public void GetStartPosition() {
+	public Vector3 GetStartPosition() {
+		Transform tStartPosition = transform.FindChild_BB("Start Position");
+		return tStartPosition.position;
 	}
 }

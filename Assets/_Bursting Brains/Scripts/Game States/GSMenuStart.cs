@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GSMenuStart : GS_Base {
@@ -30,8 +30,8 @@ public class GSMenuStart : GS_Base {
 		return isFinished;
 	}
 	
-	public override IGameState GetNextGameState() {
-		return GameFlow.gsLevel1;
+	public override GS_Interface GetNextGameState() {
+		return GameStates.gsLevel1;
 	}
 	
 	void Finish() {

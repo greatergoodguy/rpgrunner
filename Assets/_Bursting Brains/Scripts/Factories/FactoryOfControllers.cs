@@ -27,4 +27,20 @@ public static class FactoryOfControllers {
 		
 		return ctrlLevel1;
 	}
+
+	static CtrlMusic ctrlMusic;
+	public static CtrlMusic GetCtrlMusic() {
+		if(ctrlMusic == null)
+			ctrlMusic = GameObject.Find("Music").GetComponent_BB<CtrlMusic>();
+		
+		return ctrlMusic;
+	}
+
+	static CtrlSfx ctrlSfx;
+	public static CtrlSfx GetCtrlSfx() {
+		if(ctrlSfx == null)
+			ctrlSfx = GameObject.Find("Sfx").GetComponent_BB<CtrlSfx>();
+		
+		return ctrlSfx;
+	}
 }

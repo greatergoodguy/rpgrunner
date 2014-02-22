@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public abstract class GS_Base : IGameState {
+public abstract class GS_Base : GS_Interface {
         
 	public GS_Base() {}
 
     public virtual void StartState () {
-		Debug.Log(ToString() + ": Start State");
+		UtilLogger.LogInfo("GameState", ToString() + " Start State");
 	}
 	
 	public virtual void Update () {
@@ -14,9 +14,10 @@ public abstract class GS_Base : IGameState {
 	}
     
 	public virtual void ExitState () {
-		Debug.Log(ToString() + ": Exit State");
+		UtilLogger.LogInfo("GameState", ToString() + " Exit State");
+
 	}
 	
     public abstract bool IsFinished();
-    public abstract IGameState GetNextGameState() ;
+    public abstract GS_Interface GetNextGameState() ;
 }

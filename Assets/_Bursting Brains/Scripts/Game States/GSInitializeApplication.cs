@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GSInitializeApplication : GS_Base {
@@ -7,7 +7,7 @@ public class GSInitializeApplication : GS_Base {
 		return true;
 	}
 	
-	public override IGameState GetNextGameState() {
-		return GameFlow.gsMenuStart;
+	public override GS_Interface GetNextGameState() {
+		return GameStates.gsMenuStart;
 	}
 }
