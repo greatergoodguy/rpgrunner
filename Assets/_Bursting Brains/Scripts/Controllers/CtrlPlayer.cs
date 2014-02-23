@@ -2,6 +2,11 @@
 using System.Collections;
 
 public class CtrlPlayer : Ctrl_Base {
+	// ========================
+	// Inspector variables
+	// ========================
+	public float runningVelocity = 8.0f;
+
 	protected static string TAG = "CtrlPlayer";
 
 	private static float ACCEL_GRAVITY = -9.8f;
@@ -10,8 +15,6 @@ public class CtrlPlayer : Ctrl_Base {
 	private static float VELOCITY_VERTICAL_MIN = -VELOCITY_VERTICAL_MAX;
 
 	private static float VELOCITY_VERTICAL_JUMP = 6.0f;
-
-	private static float VELOCITY_RUNNING = 8.0f;
 
 	public delegate void DelOnJump();
 	public delegate void DelOnAttack();
@@ -60,7 +63,7 @@ public class CtrlPlayer : Ctrl_Base {
 	}
 
 	public void UpdateFromRunning() {
-		float deltaX = VELOCITY_RUNNING * Time.deltaTime;
+		float deltaX = runningVelocity * Time.deltaTime;
 		transform.Translate(deltaX, 0, 0);
 	}
 	// ========================

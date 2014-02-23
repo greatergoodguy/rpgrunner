@@ -9,6 +9,10 @@ public class GSLevel1 : GS_Base {
 	CtrlMusic 	ctrlMusic;
 	CtrlSfx 	ctrlSfx;
 
+	CtrlMenuPause ctrlMenuPause;
+
+	bool isPaused;
+
 	bool isFinished;
 	
 	public GSLevel1() {
@@ -17,6 +21,8 @@ public class GSLevel1 : GS_Base {
 		ctrlLevel1 	= FactoryOfControllers.GetCtrlLevel1();
 		ctrlMusic 	= FactoryOfControllers.GetCtrlMusic();
 		ctrlSfx 	= FactoryOfControllers.GetCtrlSfx();
+
+		ctrlMenuPause = FactoryOfControllers.GetCtrlMenuPause();
 	}
 	
 	public override void StartState () {
@@ -26,7 +32,6 @@ public class GSLevel1 : GS_Base {
 
 		ctrlPlayer.SetVisible(true);
 		ctrlPlayer.SetPosition(startPosition);
-
 		ctrlPlayer.SetDelOnJump(ctrlSfx.PlayJump);
 		ctrlPlayer.SetDelOnAttack(ctrlSfx.PlayAttack);
 
@@ -38,9 +43,13 @@ public class GSLevel1 : GS_Base {
 
 		isFinished = false;
 	}
-	
-	public override void ExitState () {
-		base.ExitState ();
+
+	public override void Update () {
+		base.Update ();
+
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			TogglePauseMenu();
+		}
 	}
 	
 	public override bool IsFinished() {
@@ -49,5 +58,25 @@ public class GSLevel1 : GS_Base {
 	
 	public override GS_Interface GetNextGameState() {
 		return GameStates.gsMock;
+	}
+
+	// ========================
+	// Pause Methods
+	// ========================
+	void TogglePauseMenu() {
+		if(isPaused) {
+			PauseMenuTurnOff();}
+		else {
+			PauseMenuTurnOn();}
+	}
+
+	void PauseMenuTurnOn() {
+		isPaused = true;
+		ctrlMenuPause.SetVisible(true);
+	}
+
+	void PauseMenuTurnOff() {
+		isPaused = false;
+		ctrlMenuPause.SetVisible(false);
 	}
 }

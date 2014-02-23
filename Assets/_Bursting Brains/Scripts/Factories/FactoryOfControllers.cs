@@ -11,6 +11,13 @@ public static class FactoryOfControllers {
 		return ctrlMenuStart;
 	}
 
+	static CtrlMenuPause ctrlMenuPause;
+	public static CtrlMenuPause GetCtrlMenuPause() {
+		if(ctrlMenuPause == null)
+			ctrlMenuPause = GameObject.Find("Menu Pause").GetComponent_BB<CtrlMenuPause>();
+		
+		return ctrlMenuPause;
+	}
 
 	static CtrlPlayer ctrlPlayer;
 	public static CtrlPlayer GetCtrlPlayer() {
