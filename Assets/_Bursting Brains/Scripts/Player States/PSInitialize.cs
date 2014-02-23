@@ -7,5 +7,5 @@ public class PSInitialize : PS_Base {
 		return true;}
 	
 	public override PS_Interface GetNextPlayerState() {	
-		return PlayerStates.psRunning;}
+		return PlayerStates.psAirbourne;}
 }

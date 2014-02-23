@@ -1,34 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PSRunning : PS_Base {
+public class PSJump : PS_Base {
 
 	CtrlPlayer ctrlPlayer;
 
-	bool isFinished;
-
-	public PSRunning() {
+	public PSJump() {
 		ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
 	}
 
-	public override void StartState () {
+	public override void StartState (){
 		base.StartState ();
-		isFinished = false;
+		ctrlPlayer.Jump();
 	}
 
-	public override void Update () {
+	public override void Update (){
 		base.Update ();
 
 		ctrlPlayer.UpdateFromRunning();
-
-		if(ctrlPlayer.isKeyDownJump()) {
-			isFinished = true;
-		}
 	}
 
 	public override bool IsFinished() {
-		return isFinished;}
+		return true;}
 	
 	public override PS_Interface GetNextPlayerState() {	
-		return PlayerStates.psJump;}
+		return PlayerStates.psAirbourne;}
 }

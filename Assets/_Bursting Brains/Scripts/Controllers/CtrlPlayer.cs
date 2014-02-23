@@ -2,13 +2,16 @@
 using System.Collections;
 
 public class CtrlPlayer : Ctrl_Base {
-	private static string TAG = "CtrlPlayer";
+	protected static string TAG = "CtrlPlayer";
 
 	private static float ACCEL_GRAVITY = -9.8f;
 
 	private static float VELOCITY_VERTICAL_MAX = 20.0f;
 	private static float VELOCITY_VERTICAL_MIN = -VELOCITY_VERTICAL_MAX;
 
+	private static float VELOCITY_VERTICAL_JUMP = 6.0f;
+
+	private static float VELOCITY_RUNNING = 8.0f;
 
 	public delegate void DelOnJump();
 	public delegate void DelOnAttack();
@@ -30,6 +33,9 @@ public class CtrlPlayer : Ctrl_Base {
 		activePlayerState.StartState();
 	}
 
+	// ========================
+	// Update Methods
+	// ========================
 	void Update() {
 		activePlayerState.Update();
 		
@@ -41,7 +47,6 @@ public class CtrlPlayer : Ctrl_Base {
 	}
 
 	public void UpdateFromGravity() {
-		Vector3 tempPos = transform.position;
 		verticalVelocity += ACCEL_GRAVITY * Time.deltaTime;
 		if(verticalVelocity > VELOCITY_VERTICAL_MAX)
 			verticalVelocity = VELOCITY_VERTICAL_MAX;
@@ -50,9 +55,13 @@ public class CtrlPlayer : Ctrl_Base {
 			verticalVelocity = VELOCITY_VERTICAL_MIN;
 
 		float deltaY = verticalVelocity * Time.deltaTime + (0.5f) * ACCEL_GRAVITY * Time.deltaTime * Time.deltaTime;
-		tempPos.y += deltaY;
 
 		transform.Translate(0, deltaY, 0);
+	}
+
+	public void UpdateFromRunning() {
+		float deltaX = VELOCITY_RUNNING * Time.deltaTime;
+		transform.Translate(deltaX, 0, 0);
 	}
 	// ========================
 	// Public Methods
@@ -92,13 +101,14 @@ public class CtrlPlayer : Ctrl_Base {
 	// ========================
 	// Player Actions
 	// ========================
-	private void Jump() {
-		UtilLogger.LogInfo(TAG, "Jump");
+	public void Jump() {
+		//UtilLogger.LogInfo(TAG, "Jump");
+		verticalVelocity = VELOCITY_VERTICAL_JUMP;
 		delOnJump();
 	}
 
 	private void Attack() {
-		UtilLogger.LogInfo(TAG, "Attack");
+		//UtilLogger.LogInfo(TAG, "Attack");
 		delOnAttack();
 	}
 }

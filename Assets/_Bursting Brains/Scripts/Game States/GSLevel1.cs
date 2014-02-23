@@ -3,18 +3,20 @@ using System.Collections;
 
 public class GSLevel1 : GS_Base {
 
-	CtrlPlayer ctrlPlayer;
-	CtrlLevel1 ctrlLevel1;
-	CtrlMusic ctrlMusic;
-	CtrlSfx ctrlSfx;
+	CtrlCamera 	ctrlCamera;
+	CtrlPlayer 	ctrlPlayer;
+	CtrlLevel1 	ctrlLevel1;
+	CtrlMusic 	ctrlMusic;
+	CtrlSfx 	ctrlSfx;
 
 	bool isFinished;
 	
 	public GSLevel1() {
-		ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
-		ctrlLevel1 = FactoryOfControllers.GetCtrlLevel1();
-		ctrlMusic = FactoryOfControllers.GetCtrlMusic();
-		ctrlSfx = FactoryOfControllers.GetCtrlSfx();
+		ctrlCamera 	= FactoryOfControllers.GetCtrlCamera();
+		ctrlPlayer 	= FactoryOfControllers.GetCtrlPlayer();
+		ctrlLevel1 	= FactoryOfControllers.GetCtrlLevel1();
+		ctrlMusic 	= FactoryOfControllers.GetCtrlMusic();
+		ctrlSfx 	= FactoryOfControllers.GetCtrlSfx();
 	}
 	
 	public override void StartState () {
@@ -31,6 +33,8 @@ public class GSLevel1 : GS_Base {
 		ctrlLevel1.SetVisible(true);
 
 		ctrlMusic.PlayOncomingLights();
+
+		ctrlCamera.TrackPlayer(ctrlPlayer);
 
 		isFinished = false;
 	}
