@@ -11,6 +11,9 @@ public class AIItem : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
+		if(other.tag != "Player") {
+			return;}
+
 		UtilLogger.LogInfo("AIItem", "OnTriggerEnter()");
 		Destroy(gameObject);
 	}

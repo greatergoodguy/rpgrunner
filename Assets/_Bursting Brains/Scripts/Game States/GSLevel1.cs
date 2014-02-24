@@ -48,7 +48,8 @@ public class GSLevel1 : GS_Base {
 		base.Update ();
 
 		if(Input.GetKeyDown(KeyCode.Escape)) {
-			TogglePauseMenu();
+			//TogglePauseMenu();
+			ResetLevel();
 		}
 	}
 	
