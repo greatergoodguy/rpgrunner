@@ -28,10 +28,7 @@ public class GSLevel1 : GS_Base {
 	public override void StartState () {
 		base.StartState ();
 
-		Vector3 startPosition = ctrlLevel1.GetStartPosition();
-
 		ctrlPlayer.SetVisible(true);
-		ctrlPlayer.SetPosition(startPosition);
 		ctrlPlayer.SetDelOnJump(ctrlSfx.PlayJump);
 		ctrlPlayer.SetDelOnAttack(ctrlSfx.PlayAttack);
 
@@ -42,6 +39,9 @@ public class GSLevel1 : GS_Base {
 		ctrlCamera.TrackPlayer(ctrlPlayer);
 
 		isFinished = false;
+
+		ResetLevel();
+		ctrlPlayer.SetDelOnDie(ResetLevel);
 	}
 
 	public override void Update () {
@@ -79,4 +79,15 @@ public class GSLevel1 : GS_Base {
 		isPaused = false;
 		ctrlMenuPause.SetVisible(false);
 	}
+
+	// ========================
+	// Other methods
+	// ========================
+	private void ResetLevel() {
+		Vector3 startPosition = ctrlLevel1.GetStartPosition();
+
+		ctrlPlayer.SetPosition(startPosition);
+		ctrlPlayer.SwitchStateAirbourne();
+	}
+
 }

@@ -664,8 +664,8 @@ TextureImporter:
         y: 16
         width: 48
         height: 8
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
     - name: Sky56
       rect:
         serializedVersion: 2

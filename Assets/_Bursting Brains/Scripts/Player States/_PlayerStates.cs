@@ -7,6 +7,7 @@ public class PlayerStates {
 	public static readonly PS_Interface psRunning 		= new PSRunning();
 	public static readonly PS_Interface psJump 			= new PSJump();
 	public static readonly PS_Interface psAirbourne 	= new PSAirbourne();
+	public static readonly PS_Interface psDead 			= new PSDead();
 
 	public static readonly PS_Interface psMock 			= new PSMock();
 

@@ -6,21 +6,21 @@ public class CtrlPlayer : Ctrl_Base {
 	// Inspector variables
 	// ========================
 	public float runningVelocity = 8.0f;
+	public float jumpVelocity = 6.0f;
+	public float gravityAcceleration = -9.8f;
 
 	protected static string TAG = "CtrlPlayer";
 
-	private static float ACCEL_GRAVITY = -9.8f;
-
-	private static float VELOCITY_VERTICAL_MAX = 20.0f;
+	private static float VELOCITY_VERTICAL_MAX = 50.0f;
 	private static float VELOCITY_VERTICAL_MIN = -VELOCITY_VERTICAL_MAX;
-
-	private static float VELOCITY_VERTICAL_JUMP = 6.0f;
 
 	public delegate void DelOnJump();
 	public delegate void DelOnAttack();
+	public delegate void DelOnDie();
 
 	DelOnJump delOnJump = UtilMock.MockFunction;
 	DelOnAttack delOnAttack = UtilMock.MockFunction;
+	DelOnDie delOnDie = UtilMock.MockFunction;
 
 	float verticalVelocity = 0;
 
@@ -50,14 +50,14 @@ public class CtrlPlayer : Ctrl_Base {
 	}
 
 	public void UpdateFromGravity() {
-		verticalVelocity += ACCEL_GRAVITY * Time.deltaTime;
+		verticalVelocity += gravityAcceleration * Time.deltaTime;
 		if(verticalVelocity > VELOCITY_VERTICAL_MAX)
 			verticalVelocity = VELOCITY_VERTICAL_MAX;
 
 		else if(verticalVelocity < VELOCITY_VERTICAL_MIN)
 			verticalVelocity = VELOCITY_VERTICAL_MIN;
 
-		float deltaY = verticalVelocity * Time.deltaTime + (0.5f) * ACCEL_GRAVITY * Time.deltaTime * Time.deltaTime;
+		float deltaY = verticalVelocity * Time.deltaTime + (0.5f) * gravityAcceleration * Time.deltaTime * Time.deltaTime;
 
 		transform.Translate(0, deltaY, 0);
 	}
@@ -74,14 +74,20 @@ public class CtrlPlayer : Ctrl_Base {
 	}
 
 	public void SwitchStateRunning() {
-		activePlayerState.ExitState();
-		activePlayerState = PlayerStates.psRunning;
-		activePlayerState.StartState();
+		SwitchState(PlayerStates.psRunning);
 	}
 
 	public void SwitchStateAirbourne() {
+		SwitchState(PlayerStates.psAirbourne);
+	}
+
+	public void SwitchStateDead() {
+		SwitchState(PlayerStates.psDead);
+	}
+
+	private void SwitchState(PS_Interface playerState) {
 		activePlayerState.ExitState();
-		activePlayerState = PlayerStates.psAirbourne;
+		activePlayerState = playerState;
 		activePlayerState.StartState();
 	}
 
@@ -93,6 +99,9 @@ public class CtrlPlayer : Ctrl_Base {
 
 	public void SetDelOnAttack(DelOnAttack delOnAttack) {
 		this.delOnAttack = delOnAttack;}
+
+	public void SetDelOnDie(DelOnDie delOnDie) {
+		this.delOnDie = delOnDie;}
 
 	// ========================
 	// Player Status
@@ -119,12 +128,17 @@ public class CtrlPlayer : Ctrl_Base {
 	// ========================
 	public void Jump() {
 		//UtilLogger.LogInfo(TAG, "Jump");
-		verticalVelocity = VELOCITY_VERTICAL_JUMP;
+		verticalVelocity = jumpVelocity;
 		delOnJump();
 	}
 
-	private void Attack() {
+	public void Attack() {
 		//UtilLogger.LogInfo(TAG, "Attack");
 		delOnAttack();
+	}
+
+	public void Die() {
+		//UtilLogger.LogInfo(TAG, "Attack");
+		delOnDie();
 	}
 }
