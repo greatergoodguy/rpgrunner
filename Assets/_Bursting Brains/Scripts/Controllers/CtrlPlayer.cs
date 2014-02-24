@@ -73,6 +73,18 @@ public class CtrlPlayer : Ctrl_Base {
 		transform.position = position;
 	}
 
+	public void SwitchStateRunning() {
+		activePlayerState.ExitState();
+		activePlayerState = PlayerStates.psRunning;
+		activePlayerState.StartState();
+	}
+
+	public void SwitchStateAirbourne() {
+		activePlayerState.ExitState();
+		activePlayerState = PlayerStates.psAirbourne;
+		activePlayerState.StartState();
+	}
+
 	// ========================
 	// Delegate Methods
 	// ========================
@@ -86,8 +98,9 @@ public class CtrlPlayer : Ctrl_Base {
 	// Player Status
 	// ========================
 	public bool IsOnGround() {
-		bool isOnGround = transform.position.y < 0;
-		return isOnGround;
+		return false;
+		//bool isOnGround = transform.position.y < 0;
+		//return isOnGround;
 	}
 
 	public bool isKeyDownJump() {

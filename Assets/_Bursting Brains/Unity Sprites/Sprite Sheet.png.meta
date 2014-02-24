@@ -35,7 +35,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 1
   spritePivot: {x: .5, y: .5}
-  spritePixelsToUnits: .800000012
+  spritePixelsToUnits: 1
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings:
@@ -619,8 +619,8 @@ TextureImporter:
         y: 40
         width: 48
         height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
     - name: BG482
       rect:
         serializedVersion: 2
@@ -637,8 +637,8 @@ TextureImporter:
         y: 40
         width: 56
         height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
     - name: BG562
       rect:
         serializedVersion: 2
@@ -646,8 +646,8 @@ TextureImporter:
         y: 24
         width: 56
         height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
     - name: BG563
       rect:
         serializedVersion: 2
@@ -655,8 +655,8 @@ TextureImporter:
         y: 8
         width: 56
         height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
     - name: Sky48
       rect:
         serializedVersion: 2
@@ -673,8 +673,8 @@ TextureImporter:
         y: 0
         width: 56
         height: 8
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
     - name: BG564
       rect:
         serializedVersion: 2
@@ -682,7 +682,7 @@ TextureImporter:
         y: 56
         width: 56
         height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 
