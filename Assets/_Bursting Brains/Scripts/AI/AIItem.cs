@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AIKillPlayer : MonoBehaviour {
+public class AIItem : MonoBehaviour {
 
 	CtrlPlayer ctrlPlayer;
 
@@ -11,7 +11,7 @@ public class AIKillPlayer : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		UtilLogger.LogInfo("AIKillPlayer", "OnTriggerEnter()");
-		ctrlPlayer.SwitchStateDead();
+		UtilLogger.LogInfo("AIItem", "OnTriggerEnter()");
+		Destroy(gameObject);
 	}
 }

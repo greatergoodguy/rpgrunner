@@ -10,16 +10,12 @@ public class AIGround : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		print ("OnTriggerEnter()");
+		UtilLogger.LogInfo("AIGround", "OnTriggerEnter()");
 		ctrlPlayer.SwitchStateRunning();
 	}
 
 	void OnTriggerExit(Collider other) {
-		print ("OnTriggerExit()");
+		UtilLogger.LogInfo("AIGround", "OnTriggerExit()");
 		ctrlPlayer.SwitchStateAirbourne();
-	}
-
-	void OnCollisionEnter(Collision collision) {
-		print ("OnCollisionEnter()");
 	}
 }

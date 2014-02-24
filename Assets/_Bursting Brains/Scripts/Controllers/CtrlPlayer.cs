@@ -47,6 +47,10 @@ public class CtrlPlayer : Ctrl_Base {
 			activePlayerState = activePlayerState.GetNextPlayerState();
 			activePlayerState.StartState();
 		}
+
+		if(isKeyDownAttack()) {
+			Attack();
+		}
 	}
 
 	public void UpdateFromGravity() {
@@ -134,6 +138,10 @@ public class CtrlPlayer : Ctrl_Base {
 
 	public void Attack() {
 		//UtilLogger.LogInfo(TAG, "Attack");
+		GameObject goFireball = FactoryOfAttacks.GetGOFireball();
+
+		goFireball.transform.position = transform.position;
+
 		delOnAttack();
 	}
 
