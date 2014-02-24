@@ -61,7 +61,7 @@ public class CtrlPlayer : Ctrl_Base {
 		else if(verticalVelocity < VELOCITY_VERTICAL_MIN)
 			verticalVelocity = VELOCITY_VERTICAL_MIN;
 
-		float deltaY = verticalVelocity * Time.deltaTime + (0.5f) * gravityAcceleration * Time.deltaTime * Time.deltaTime;
+		float deltaY = 2 * (verticalVelocity * Time.deltaTime + (0.5f) * gravityAcceleration * Time.deltaTime * Time.deltaTime);
 
 		transform.Translate(0, deltaY, 0);
 	}
