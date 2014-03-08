@@ -9,9 +9,11 @@ public class CtrlPlayer : Ctrl_Base {
 	public float jumpVelocity = 6.0f;
 	public float gravityAcceleration = -9.8f;
 
+
 	protected static string TAG = "CtrlPlayer";
 
-	private static float VELOCITY_VERTICAL_MAX = 50.0f;
+	//private static float VELOCITY_VERTICAL_MAX = 50.0f;
+	private static float VELOCITY_VERTICAL_MAX = 5.0f;
 	private static float VELOCITY_VERTICAL_MIN = -VELOCITY_VERTICAL_MAX;
 
 	public delegate void DelOnJump();
@@ -23,6 +25,7 @@ public class CtrlPlayer : Ctrl_Base {
 	DelOnDie delOnDie = UtilMock.MockFunction;
 
 	float verticalVelocity = 0;
+	int numOfTriggerEnterGroundCounters = 0;
 
 	PS_Interface activePlayerState;
 
@@ -70,6 +73,7 @@ public class CtrlPlayer : Ctrl_Base {
 		float deltaX = runningVelocity * Time.deltaTime;
 		transform.Translate(deltaX, 0, 0);
 	}
+
 	// ========================
 	// Public Methods
 	// ========================
@@ -93,6 +97,23 @@ public class CtrlPlayer : Ctrl_Base {
 		activePlayerState.ExitState();
 		activePlayerState = playerState;
 		activePlayerState.StartState();
+	}
+
+	// ========================
+	// Trigger Methods
+	// ========================
+	public void OnTriggerEnterGround() {
+		if(numOfTriggerEnterGroundCounters == 0) {
+			SwitchStateRunning();}
+
+		numOfTriggerEnterGroundCounters++;
+	}
+
+	public void OnTriggerExitGround() {
+		numOfTriggerEnterGroundCounters--;
+
+		if(numOfTriggerEnterGroundCounters == 0) {
+			SwitchStateAirbourne();}
 	}
 
 	// ========================

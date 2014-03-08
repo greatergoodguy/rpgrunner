@@ -35,7 +35,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 1
   spritePivot: {x: .5, y: .5}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 8
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings:
@@ -628,8 +628,8 @@ TextureImporter:
         y: 24
         width: 48
         height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: .5, y: .5}
     - name: BG561
       rect:
         serializedVersion: 2

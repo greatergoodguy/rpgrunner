@@ -14,7 +14,7 @@ public class AIGround : MonoBehaviour {
 			return;}
 
 		UtilLogger.LogInfo("AIGround", "OnTriggerEnter()");
-		ctrlPlayer.SwitchStateRunning();
+		ctrlPlayer.OnTriggerEnterGround();
 	}
 
 	void OnTriggerExit(Collider other) {
@@ -22,6 +22,6 @@ public class AIGround : MonoBehaviour {
 			return;}
 
 		UtilLogger.LogInfo("AIGround", "OnTriggerExit()");
-		ctrlPlayer.SwitchStateAirbourne();
+		ctrlPlayer.OnTriggerExitGround();
 	}
 }
