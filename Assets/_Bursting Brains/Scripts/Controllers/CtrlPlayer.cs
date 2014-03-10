@@ -207,10 +207,6 @@ public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 
 	public void Attack() {
 		//UtilLogger.LogInfo(TAG, "Attack");
-		GameObject goFireball = FactoryOfAttacks.GetGOFireball();
-
-		goFireball.transform.position = transform.position;
-
 		delOnAttack();
 	}
 

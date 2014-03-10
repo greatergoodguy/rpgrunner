@@ -14,5 +14,8 @@ public class PCtrlGreenHunter : PCtrl_Base {
 	// ====================
 	public override void Shoot() {
 		animator.Play("greenhunter_shoot");
+
+		GameObject goArrow = FactoryOfAttacks.GetGOArrowMetal();
+		goArrow.transform.position = transform.position;
 	}
 }

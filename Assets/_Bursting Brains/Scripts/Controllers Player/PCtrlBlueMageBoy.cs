@@ -14,5 +14,8 @@ public class PCtrlBlueMageBoy : PCtrl_Base {
 	// ====================
 	public override void Shoot() {
 		animator.Play("bluemageboy_shoot");
+
+		GameObject goArrow = FactoryOfAttacks.GetGOArrowFire();
+		goArrow.transform.position = transform.position;
 	}
 }

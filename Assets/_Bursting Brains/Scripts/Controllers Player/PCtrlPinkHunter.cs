@@ -14,5 +14,8 @@ public class PCtrlPinkHunter : PCtrl_Base {
 	// ====================
 	public override void Shoot() {
 		animator.Play("pinkhunter_shoot");
+
+		GameObject goArrowWood = FactoryOfAttacks.GetGOArrowWood();
+		goArrowWood.transform.position = transform.position;
 	}
 }

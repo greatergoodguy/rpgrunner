@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AIProjectile : MonoBehaviour {
 
-	private float speedMetersPerSecond = 50;
+	private float speedMetersPerSecond = 5;
 	
 	void Update(){
 		Vector3 tempPos = transform.position;
