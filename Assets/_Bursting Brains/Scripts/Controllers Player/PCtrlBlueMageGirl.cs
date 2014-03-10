@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PCtrlBlueMage : PCtrl_Base {
+public class PCtrlBlueMageGirl : PCtrl_Base {
 
 	tk2dSpriteAnimator animator;
 
@@ -13,6 +13,6 @@ public class PCtrlBlueMage : PCtrl_Base {
 	// Abstract Methods
 	// ====================
 	public override void Shoot() {
-		animator.Play("bluemage_shoot");
+		animator.Play("bluemagegirl_shoot");
 	}
 }

@@ -37,12 +37,17 @@ public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 	void Awake() {
 		activePlayerState = PlayerStates.GetInitialPlayerState();
 
-		PCtrl_Base pCtrl_BlueMageGirl = transform.FindChild_BB("Blue Mage Girl").GetComponent<PCtrlBlueMage>();
+		PCtrl_Base pCtrl_BlueMageGirl = transform.FindChild_BB("Blue Mage Girl").GetComponent<PCtrlBlueMageGirl>();
 		pCtrls.Add(pCtrl_BlueMageGirl);
+
+		PCtrl_Base pCtrl_BlueMageBoy = transform.FindChild_BB("Blue Mage Boy").GetComponent<PCtrlBlueMageBoy>();
+		pCtrls.Add(pCtrl_BlueMageBoy);
+
+		PCtrl_Base pCtrl_PinkHunter = transform.FindChild_BB("Pink Hunter").GetComponent<PCtrlPinkHunter>();
+		pCtrls.Add(pCtrl_PinkHunter);
 
 		PCtrl_Base pCtrl_GreenHunter = transform.FindChild_BB("Green Hunter").GetComponent<PCtrlGreenHunter>();
 		pCtrls.Add(pCtrl_GreenHunter);
-
 
 		PCtrlReset();
 	}
