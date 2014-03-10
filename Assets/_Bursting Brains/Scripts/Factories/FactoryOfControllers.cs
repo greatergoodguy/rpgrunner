@@ -58,4 +58,12 @@ public static class FactoryOfControllers {
 		
 		return ctrlCamera;
 	}
+
+	static CtrlConstants ctrlConstants;
+	public static CtrlConstants GetCtrlConstants() {
+		if(ctrlConstants == null)
+			ctrlConstants = GameObject.Find("Constants").GetComponent_BB<CtrlConstants>();
+		
+		return ctrlConstants;
+	}
 }

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class CtrlPlayer : Ctrl_Base {
+public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 	// ========================
 	// Inspector variables
 	// ========================
@@ -29,8 +30,21 @@ public class CtrlPlayer : Ctrl_Base {
 
 	PS_Interface activePlayerState;
 
+	PCtrl_Base pCtrlCurrent;
+	int pCtrlCurrentIndex;
+	IList<PCtrl_Base> pCtrls = new List<PCtrl_Base>();
+
 	void Awake() {
 		activePlayerState = PlayerStates.GetInitialPlayerState();
+
+		PCtrl_Base pCtrl_BlueMageGirl = transform.FindChild_BB("Blue Mage Girl").GetComponent<PCtrlBlueMage>();
+		pCtrls.Add(pCtrl_BlueMageGirl);
+
+		PCtrl_Base pCtrl_GreenHunter = transform.FindChild_BB("Green Hunter").GetComponent<PCtrlGreenHunter>();
+		pCtrls.Add(pCtrl_GreenHunter);
+
+
+		PCtrlReset();
 	}
 
 	void Start () {
@@ -38,6 +52,30 @@ public class CtrlPlayer : Ctrl_Base {
 
 		activePlayerState.StartState();
 	}
+	// ========================
+	// PCtrl Methods
+	// ========================
+	void PCtrlReset() {
+		foreach(PCtrl_Base pCtrl in pCtrls) {
+			pCtrl.SetActiveFalse();
+		}
+
+		pCtrlCurrentIndex = 0;
+		pCtrlCurrent = pCtrls[pCtrlCurrentIndex];
+		pCtrlCurrent.SetActiveTrue();
+	}
+
+	void PCtrlRotate() {
+		pCtrlCurrent.SetActiveFalse();
+
+		pCtrlCurrentIndex++;
+		if(pCtrlCurrentIndex >= pCtrls.Count) {
+			pCtrlCurrentIndex = 0;}
+
+		pCtrlCurrent = pCtrls[pCtrlCurrentIndex];
+		pCtrlCurrent.SetActiveTrue();
+	}
+
 
 	// ========================
 	// Update Methods
@@ -52,7 +90,12 @@ public class CtrlPlayer : Ctrl_Base {
 		}
 
 		if(isKeyDownAttack()) {
-			Attack();
+			//Attack();
+			pCtrlCurrent.Shoot();
+		}
+
+		if(Input.GetKeyDown(KeyCode.R)) {
+			PCtrlRotate();
 		}
 	}
 
@@ -169,5 +212,16 @@ public class CtrlPlayer : Ctrl_Base {
 	public void Die() {
 		//UtilLogger.LogInfo(TAG, "Attack");
 		delOnDie();
+	}
+
+	// ========================
+	// IObserver of Health
+	// ========================
+	public void onHealthReducedByOne() {
+
+	}
+
+	public void onHealthEmpty() {
+
 	}
 }
