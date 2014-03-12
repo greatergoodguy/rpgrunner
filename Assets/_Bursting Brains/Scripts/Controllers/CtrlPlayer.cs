@@ -9,7 +9,7 @@ public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 	public float runningVelocity = 0.5f;
 	public float jumpVelocity = 0.7f;
 	public float gravityAcceleration = -0.98f;
-	public float gravityScaleFactor = 1.0f;
+	public float deltaYScaleFactor = 1.0f;
 
 
 	protected static string TAG = "CtrlPlayer";
@@ -113,7 +113,7 @@ public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 		else if(verticalVelocity < VELOCITY_VERTICAL_MIN)
 			verticalVelocity = VELOCITY_VERTICAL_MIN;
 
-		float deltaY = gravityScaleFactor * (verticalVelocity * Time.deltaTime + (0.5f) * gravityAcceleration * Time.deltaTime * Time.deltaTime);
+		float deltaY = deltaYScaleFactor * (verticalVelocity * Time.deltaTime + (0.5f) * gravityAcceleration * Time.deltaTime * Time.deltaTime);
 
 		transform.Translate(0, deltaY, 0);
 	}
@@ -187,7 +187,19 @@ public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 	}
 
 	public bool isKeyDownJump() {
-		return Input.GetKeyDown(KeyCode.Space);
+		if (Application.platform == RuntimePlatform.Android) {
+			foreach(Touch touch in Input.touches) {
+				if(touch.phase == TouchPhase.Began)
+					return true;
+				else {
+					break;}
+			}
+
+			return false;
+		}
+		else {
+			return Input.GetKeyDown(KeyCode.Space);
+		}
 	}
 
 	public bool isKeyDownAttack() {
