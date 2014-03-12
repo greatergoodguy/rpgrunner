@@ -6,15 +6,15 @@ public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 	// ========================
 	// Inspector variables
 	// ========================
-	public float runningVelocity = 8.0f;
-	public float jumpVelocity = 6.0f;
-	public float gravityAcceleration = -9.8f;
+	public float runningVelocity = 0.5f;
+	public float jumpVelocity = 0.7f;
+	public float gravityAcceleration = -0.98f;
 
 
 	protected static string TAG = "CtrlPlayer";
 
 	//private static float VELOCITY_VERTICAL_MAX = 50.0f;
-	private static float VELOCITY_VERTICAL_MAX = 5.0f;
+	private static float VELOCITY_VERTICAL_MAX = 0.5f;
 	private static float VELOCITY_VERTICAL_MIN = -VELOCITY_VERTICAL_MAX;
 
 	public delegate void DelOnJump();
