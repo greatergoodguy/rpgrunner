@@ -74,4 +74,12 @@ public static class FactoryOfControllers {
 
 		return ctrlHealth;
 	}
+
+	static CtrlBank ctrlBank;
+	public static CtrlBank GetCtrlBank() {
+		if(ctrlBank == null)
+			ctrlBank = GameObject.Find("Bank").GetComponent_BB<CtrlBank>();
+		
+		return ctrlBank;
+	}
 }

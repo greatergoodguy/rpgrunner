@@ -5,15 +5,20 @@ public class GSInitializeApplicationPost : GS_Base {
 
 	CtrlPlayer ctrlPlayer;
 	CtrlHealth ctrlHealth;
+	CtrlBank ctrlBank;
+
+	public GSInitializeApplicationPost() {
+		ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
+		ctrlHealth = FactoryOfControllers.GetCtrlHealth();
+		ctrlBank = FactoryOfControllers.GetCtrlBank();
+	}
 
 	public override void StartState () {
 		base.StartState ();
-
-		ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
-		ctrlHealth = FactoryOfControllers.GetCtrlHealth();
-
 		ctrlPlayer.addObserver(ctrlHealth);
 		ctrlHealth.TrackPlayer(ctrlPlayer);
+		ctrlBank.TrackPlayer(ctrlPlayer);
+
 	}
 
 	public override bool IsFinished() {
