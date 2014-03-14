@@ -66,4 +66,12 @@ public static class FactoryOfControllers {
 		
 		return ctrlConstants;
 	}
+
+	static CtrlHealth ctrlHealth;
+	public static CtrlHealth GetCtrlHealth() {
+		if(ctrlHealth == null)
+			ctrlHealth = GameObject.Find("Health").GetComponent_BB<CtrlHealth>();
+
+		return ctrlHealth;
+	}
 }

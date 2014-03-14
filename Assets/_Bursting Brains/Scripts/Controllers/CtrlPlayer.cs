@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
+public class CtrlPlayer : Ctrl_Base {
 	// ========================
 	// Inspector variables
 	// ========================
@@ -35,6 +35,9 @@ public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 	int pCtrlCurrentIndex;
 	IList<PCtrl_Base> pCtrls = new List<PCtrl_Base>();
 
+	PlAtHealth plAtHealth;
+	PlAtObservers plAtObservers;
+
 	void Awake() {
 		activePlayerState = PlayerStates.GetInitialPlayerState();
 
@@ -51,6 +54,9 @@ public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 		pCtrls.Add(pCtrl_GreenHunter);
 
 		PCtrlReset();
+
+		plAtHealth = new PlAtHealth(3);
+		plAtObservers = new PlAtObservers();
 	}
 
 	void Start () {
@@ -210,6 +216,14 @@ public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 	}
 
 	// ========================
+	// Hurt Player
+	// ========================
+	public void ReceiveOneDamage() {
+		plAtHealth.ReduceByOne();
+		plAtObservers.NotifyOnReceiveOneDamage();
+	}
+
+	// ========================
 	// Player Actions
 	// ========================
 	public void Jump() {
@@ -229,13 +243,9 @@ public class CtrlPlayer : Ctrl_Base, IObserverOfHealth {
 	}
 
 	// ========================
-	// IObserver of Health
+	// IObserverOfPlayer Methods
 	// ========================
-	public void onHealthReducedByOne() {
-
-	}
-
-	public void onHealthEmpty() {
-
+	public void addObserver(IObserverOfPlayer observer) {
+		plAtObservers.Add(observer);
 	}
 }

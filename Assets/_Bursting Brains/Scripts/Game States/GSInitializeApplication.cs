@@ -8,6 +8,6 @@ public class GSInitializeApplication : GS_Base {
 	}
 	
 	public override GS_Interface GetNextGameState() {
-		return GameStates.gsMenuStart;
+		return GameStates.gsInitializeApplicationPost;
 	}
 }
