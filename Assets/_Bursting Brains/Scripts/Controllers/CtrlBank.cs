@@ -15,4 +15,8 @@ public class CtrlBank : Ctrl_Base {
 	public void TrackPlayer(CtrlPlayer ctrlPlayer) {
 		this.target = ctrlPlayer.transform;
 	}
+
+	public void IncreaseBankBy5() {
+		UtilLogger.LogInfo("CtrlBank", "IncreaseBankBy5()");
+	}
 }
