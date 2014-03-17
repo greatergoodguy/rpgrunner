@@ -21,7 +21,7 @@ public class AIGround : AI_Base {
 
 		float playerBottom = ctrlPlayer.GetBottom();
 		float groundTop = getTop();
-		bool isPlayerAboveGround = groundTop - playerBottom < 0.007f;
+		bool isPlayerAboveGround = groundTop - playerBottom < 0.01f;
 
 		shouldEnterTrigger = isPlayerFalling && isPlayerAboveGround;
 
