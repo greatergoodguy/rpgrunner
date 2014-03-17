@@ -172,6 +172,18 @@ public class CtrlPlayer : Ctrl_Base {
 	}
 
 	// ========================
+	// Coordinates Methods
+	// ========================
+	public float GetCenterY() {
+		return collider.bounds.center.y;
+	}
+
+	public float GetBottom() {
+		float result = collider.bounds.center.y - (collider.bounds.size.y / 2);
+		return result;
+	}
+
+	// ========================
 	// Delegate Methods
 	// ========================
 	public void SetDelOnJump(DelOnJump delOnJump) {
