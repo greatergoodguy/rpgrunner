@@ -82,4 +82,12 @@ public static class FactoryOfControllers {
 		
 		return ctrlBank;
 	}
+
+	static CtrlViewport ctrlViewport;
+	public static CtrlViewport GetCtrlViewport() {
+		if(ctrlViewport == null)
+			ctrlViewport = GameObject.Find("Viewport").GetComponent_BB<CtrlViewport>();
+		
+		return ctrlViewport;
+	}
 }

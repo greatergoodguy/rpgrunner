@@ -3,11 +3,11 @@ using System.Collections;
 
 public class AIItem : MonoBehaviour {
 
-	CtrlPlayer ctrlPlayer;
+	//CtrlPlayer ctrlPlayer;
 
 	// Use this for initialization
 	void Start () {
-		ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
+		//ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
 	}
 
 	void OnTriggerEnter(Collider other) {

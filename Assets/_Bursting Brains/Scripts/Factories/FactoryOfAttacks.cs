@@ -3,25 +3,25 @@ using System.Collections;
 
 public static class FactoryOfAttacks {
 	
-	static GameObject goArrowWood;
+	static GameObject goArrowWood = null;
 	public static GameObject GetGOArrowWood(){
-		GameObject result = GetGOProjectile(goArrowFire, "Arrow Wood");
+		GameObject result = GetGOProjectile(goArrowWood, "Arrow Wood");
 		return result;
 	}
 
-	static GameObject goArrowMetal;
+	static GameObject goArrowMetal = null;
 	public static GameObject GetGOArrowMetal() {
-		GameObject result = GetGOProjectile(goArrowFire, "Arrow Metal");
+		GameObject result = GetGOProjectile(goArrowMetal, "Arrow Metal");
 		return result;
 	}
 
-	static GameObject goArrowFire;
+	static GameObject goArrowFire = null;
 	public static GameObject GetGOArrowFire() {
 		GameObject result = GetGOProjectile(goArrowFire, "Arrow Fire");
 		return result;
 	}
 
-	static GameObject goArrowIce;
+	static GameObject goArrowIce = null;
 	public static GameObject GetGOArrowIce() {
 		GameObject result = GetGOProjectile(goArrowIce, "Arrow Ice");
 		return result;
