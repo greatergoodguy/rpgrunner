@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ChAIRunForDuration : ChAI_Base {
 
-	public float runningVelocity = 0.5f;
+	public float runningVelocity = 0.3f;
 
 	void Start () {
 	

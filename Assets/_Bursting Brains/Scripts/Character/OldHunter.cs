@@ -9,7 +9,13 @@ public class OldHunter : Character_Base {
 		goVisual = transform.FindChild_BB("Visual").gameObject;
 	}
 
-	protected override void OnTriggerEnterCharacter() {
+	public override void OnBoundsEnter() {
+		goVisual.AddComponent<ChAIRunForDuration>();
+	}
+
+	public override void OnBoundsExit() {
+		ChAI_Base characterAI = goVisual.GetComponent<ChAIRunForDuration>();
+		Destroy(characterAI);
 
 	}
 }
