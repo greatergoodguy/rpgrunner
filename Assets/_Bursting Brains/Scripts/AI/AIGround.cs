@@ -4,6 +4,7 @@ using System.Collections;
 public class AIGround : MonoBehaviour {
 
 	CtrlPlayer ctrlPlayer;
+	bool isPlayerFalling;
 	
 	void Start () {
 		ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
@@ -14,7 +15,10 @@ public class AIGround : MonoBehaviour {
 			return;}
 
 		UtilLogger.LogInfo("AIGround", "OnTriggerEnter()");
-		ctrlPlayer.OnTriggerEnterGround();
+
+		isPlayerFalling = ctrlPlayer.IsFalling();
+		if(isPlayerFalling) {
+			ctrlPlayer.OnTriggerEnterGround();}
 	}
 
 	void OnTriggerExit(Collider other) {
@@ -22,6 +26,8 @@ public class AIGround : MonoBehaviour {
 			return;}
 
 		UtilLogger.LogInfo("AIGround", "OnTriggerExit()");
-		ctrlPlayer.OnTriggerExitGround();
+
+		if(isPlayerFalling) {
+			ctrlPlayer.OnTriggerExitGround();}
 	}
 }

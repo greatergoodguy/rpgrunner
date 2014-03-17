@@ -186,6 +186,11 @@ public class CtrlPlayer : Ctrl_Base {
 	// ========================
 	// Player Status
 	// ========================
+	public bool IsFalling() {
+		bool result = verticalVelocity < 0;
+		return result;
+	}
+
 	public bool IsOnGround() {
 		return false;
 		//bool isOnGround = transform.position.y < 0;
