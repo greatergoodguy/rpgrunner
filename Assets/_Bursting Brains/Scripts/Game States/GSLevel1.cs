@@ -51,6 +51,15 @@ public class GSLevel1 : GS_Base {
 			//TogglePauseMenu();
 			ResetLevel();
 		}
+
+		if(Input.GetKeyDown(KeyCode.P)) {
+			if(UtilTime.IsTimeScaleZero()) {
+				UtilTime.SetTimeScaleToOne();
+			}
+			else {
+				UtilTime.SetTimeScaleToZero();
+			}
+		}
 	}
 	
 	public override bool IsFinished() {
